@@ -21,9 +21,8 @@ import com.estacionapy.restfull.repository.CategoriaUsuariosRepository;
 import com.estacionapy.restfull.exception.ResourceNotFoundException;
 import com.estacionapy.restfull.model.CategoriaUsuarios;
 
-
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/")
 public class CategoriaUsuariosControlador{
 	@Autowired
 	private CategoriaUsuariosRepository categoriaUsuariosRepository;
@@ -42,12 +41,12 @@ public class CategoriaUsuariosControlador{
 	}
 	
 	@PostMapping("/categoriaUsuarios")
-    public CategoriaUsuarios createEmployee(@Valid @RequestBody CategoriaUsuarios categoriaUsuarios) {
+    public CategoriaUsuarios createCategoriaUsuarios(@Valid @RequestBody CategoriaUsuarios categoriaUsuarios) {
         return categoriaUsuariosRepository.save(categoriaUsuarios);
     }
 	
 	@PutMapping("/categoriaUsuarios/{id}")
-    public ResponseEntity<CategoriaUsuarios> updateEmployee(@PathVariable(value = "id") Long categoriaId,
+    public ResponseEntity<CategoriaUsuarios> updateCategoriaUsuarios(@PathVariable(value = "id") Long categoriaId,
          @Valid @RequestBody CategoriaUsuarios categoriaUsuariosDetails) throws ResourceNotFoundException {
 		CategoriaUsuarios categoriaUsuarios = categoriaUsuariosRepository.findById(categoriaId)
         .orElseThrow(() -> new ResourceNotFoundException("No se encuentran categorias con este id :: " + categoriaId));
@@ -59,7 +58,7 @@ public class CategoriaUsuariosControlador{
     }
 
 	@DeleteMapping("/categoriaUsuarios/{id}")
-    public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") Long categoriaId)
+    public Map<String, Boolean> deleteCategoriaUsuarios(@PathVariable(value = "id") Long categoriaId)
          throws ResourceNotFoundException {
 		CategoriaUsuarios categoriaUsuarios = categoriaUsuariosRepository.findById(categoriaId)
        .orElseThrow(() -> new ResourceNotFoundException("No se encuentran categorias con este id :: " + categoriaId));
