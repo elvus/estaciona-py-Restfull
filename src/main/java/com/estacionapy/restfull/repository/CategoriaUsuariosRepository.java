@@ -8,4 +8,6 @@ import com.estacionapy.restfull.model.CategoriaUsuarios;
 @Repository
 public interface CategoriaUsuariosRepository extends JpaRepository<CategoriaUsuarios, Long>{
 
+	
+
 }

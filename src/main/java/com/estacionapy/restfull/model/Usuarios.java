@@ -1,14 +1,12 @@
 package com.estacionapy.restfull.model;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name="usuarios")
 public class Usuarios {
     private long id;
     private String nombre;
@@ -16,20 +14,18 @@ public class Usuarios {
     private String num_documento;
     private String email;
     private String celular;
-    private String nacionalidad;
     private Boolean estado;
 
     public Usuarios(){
 
     }
 
-    public Usuarios(String nombre, String documento, String num_documento, String email, String celular, String nacionalidad, Boolean estado){
+    public Usuarios(String nombre, String documento, String num_documento, String email, String celular, Boolean estado){
         this.nombre=nombre;
         this.documento=documento;
         this.num_documento=num_documento;
         this.email=email;
         this.celular=celular;
-        this.nacionalidad=nacionalidad;
         this.estado=estado;
     }
 
@@ -80,14 +76,6 @@ public class Usuarios {
     }
     public void setCelular(String celular){
         this.celular=celular;
-    }
-    
-    @Column(name = "nacionalidad", nullable = false)
-    public String getNacionalidad(){
-        return nacionalidad;
-    }
-    public void setNacionalidad(String nacionalidad){
-        this.nacionalidad=nacionalidad;
     }
 
     @Column(name = "estado", nullable = false)
