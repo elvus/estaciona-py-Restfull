@@ -42,15 +42,15 @@ public class CategoriaUsuariosControlador{
 	}
 	
 	@PostMapping("/categoriaUsuarios")
-    public CategoriaUsuarios createEmployee(@Valid @RequestBody CategoriaUsuarios categoriaUsuarios) {
+    public CategoriaUsuarios createCategoriaUsuarios(@Valid @RequestBody CategoriaUsuarios categoriaUsuarios) {
         return categoriaUsuariosRepository.save(categoriaUsuarios);
     }
 	
 	@PutMapping("/categoriaUsuarios/{id}")
-    public ResponseEntity<CategoriaUsuarios> updateEmployee(@PathVariable(value = "id") Long categoriaId,
+    public ResponseEntity<CategoriaUsuarios> updateCategoriaUsusarios(@PathVariable(value = "id") Long categoriaId,
          @Valid @RequestBody CategoriaUsuarios categoriaUsuariosDetails) throws ResourceNotFoundException {
 		CategoriaUsuarios categoriaUsuarios = categoriaUsuariosRepository.findById(categoriaId)
-        .orElseThrow(() -> new ResourceNotFoundException("No se encuentran categorias con este id :: " + categoriaId));
+				.orElseThrow(() -> new ResourceNotFoundException("No se encuentran categorias con este id :: " + categoriaId));
 
 		categoriaUsuarios.setCategoria(categoriaUsuariosDetails.getCategoria());
 		categoriaUsuarios.setEstadoCategoria(categoriaUsuariosDetails.getEstadoCategoria());
@@ -59,7 +59,7 @@ public class CategoriaUsuariosControlador{
     }
 
 	@DeleteMapping("/categoriaUsuarios/{id}")
-    public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") Long categoriaId)
+    public Map<String, Boolean> deleteCategoriaUsuario(@PathVariable(value = "id") Long categoriaId)
          throws ResourceNotFoundException {
 		CategoriaUsuarios categoriaUsuarios = categoriaUsuariosRepository.findById(categoriaId)
        .orElseThrow(() -> new ResourceNotFoundException("No se encuentran categorias con este id :: " + categoriaId));
