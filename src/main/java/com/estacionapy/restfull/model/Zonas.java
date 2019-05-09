@@ -30,7 +30,7 @@ public class Zonas {
 	public long getId_zona() {
 		return id_zona;
 	}
-	public void setDescripcion(long id_zona) {
+	public void setId_zona(long id_zona) {
 		this.id_zona=id_zona;
 	}
 	
@@ -54,7 +54,7 @@ public class Zonas {
 	public Boolean getEstado_zona() {
 		return estado_zona;
 	}
-	public void setEstado(Boolean estado_zona) {
+	public void setEstado_zona(Boolean estado_zona) {
 		this.estado_zona=estado_zona;
 	}
 }
