@@ -43,7 +43,7 @@ public class Infracciones {
 	public Boolean getEstado_infraccion() {
 		return estado_infraccion;
 	}
-	public void setDescripcion(Boolean estado_infraccion) {
+	public void setEstado_infraccion(Boolean estado_infraccion) {
 		this.estado_infraccion=estado_infraccion;
 	}
 }

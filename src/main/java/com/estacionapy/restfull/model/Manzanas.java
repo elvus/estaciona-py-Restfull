@@ -1,10 +1,10 @@
 package com.estacionapy.restfull.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="manzanas")
 public class Manzanas {
 	long id_manzana;
 	String num_manzana;
@@ -28,7 +28,7 @@ public class Manzanas {
 		this.id_manzana=id_manzana;
 	}
 	
-	@Column(name="num_manzana")
+	@Column (name="num_manzana")
 	public String getNum_manzana() {
 		return num_manzana;
 	}

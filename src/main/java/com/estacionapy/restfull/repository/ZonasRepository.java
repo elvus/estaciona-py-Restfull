@@ -7,4 +7,5 @@ import com.estacionapy.restfull.model.Zonas;
 
 @Repository
 public interface ZonasRepository extends JpaRepository<Zonas, Long>{
+
 }

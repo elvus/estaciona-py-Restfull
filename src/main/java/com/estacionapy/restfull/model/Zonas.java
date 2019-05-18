@@ -34,7 +34,7 @@ public class Zonas {
 		this.id_zona=id_zona;
 	}
 	
-	@Column(name="costo", nullable=false)
+	@Column(name="descripcion", nullable=false)
 	public String getDescripcion() {
 		return descripcion;
 	}
