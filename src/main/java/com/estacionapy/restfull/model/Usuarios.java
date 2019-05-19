@@ -10,8 +10,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name="usuarios")
 public class Usuarios {
-    private long id;
+    private long id_usuario;
     private String nombre;
+    private String password;
+    private String token;
     private String documento;
     private String num_documento;
     private String email;
@@ -23,8 +25,10 @@ public class Usuarios {
 
     }
 
-    public Usuarios(String nombre, String documento, String num_documento, String email, String celular, String nacionalidad, Boolean estado){
+    public Usuarios(String nombre, String password, String token, String documento, String num_documento, String email, String celular, String nacionalidad, Boolean estado){
         this.nombre=nombre;
+        this.password=password;
+        this.token=token;
         this.documento=documento;
         this.num_documento=num_documento;
         this.email=email;
@@ -35,11 +39,11 @@ public class Usuarios {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    public long getId() {
-        return id;
+    public long getId_usuario() {
+        return id_usuario;
     }
-    public void setId(long id) {
-        this.id=id;
+    public void setId_usuario(long id_usuario) {
+        this.id_usuario=id_usuario;
     }
 
     @Column(name = "nombre", nullable = false)
@@ -48,6 +52,22 @@ public class Usuarios {
     }
     public void setNombre(String nombre){
         this.nombre=nombre;
+    }
+
+    @Column(name = "password", nullable = false)
+    public String getPassword(){
+        return password;
+    }
+    public void setPassword(String password){
+        this.password=password;
+    }
+
+    @Column(name = "token", nullable = false)
+    public String getToken(){
+        return token;
+    }
+    public void setToken(String token){
+        this.token=token;
     }
 
     @Column(name = "documento", nullable = false)
@@ -101,7 +121,7 @@ public class Usuarios {
     @Override
     public String toString() {
         return "Usuarios[" +
-                "id=" + id +
+                "id=" + id_usuario +
                 ", nombre='" + nombre + '\'' +
                 ", documento='" + documento + '\'' +
                 ", num_documento='" + num_documento + '\'' +
