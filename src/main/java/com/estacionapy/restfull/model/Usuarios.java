@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="usuarios")
 public class Usuarios {
-    private long id_usuario;
+    private String id_usuario;
     private String nombre;
     private String password;
     private String token;
@@ -39,10 +39,10 @@ public class Usuarios {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    public long getId_usuario() {
+    public String getId_usuario() {
         return id_usuario;
     }
-    public void setId_usuario(long id_usuario) {
+    public void setId_usuario(String id_usuario) {
         this.id_usuario=id_usuario;
     }
 
