@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.estacionapy.restfull.model.Usuarios;
 
 @Repository
-public interface UsuariosRepository extends JpaRepository<Usuarios, Long>{
+public interface UsuariosRepository extends JpaRepository<Usuarios, String>{
 
 }
