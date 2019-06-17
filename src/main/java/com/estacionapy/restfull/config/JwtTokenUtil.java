@@ -1,7 +1,19 @@
 package com.estacionapy.restfull.config;
+import com.estacionapy.restfull.model.Usuarios;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
+
 import java.io.Serializable;
-import
+import java.util.Arrays;
+import java.util.Date;
+import java.util.function.Function;
+
+import static com.estacionapy.restfull.model.Constants.ACCESS_TOKEN_VALIDITY_SECONDS;
+import static com.estacionapy.restfull.model.Constants.SIGNING_KEY;
 
 @Component
 public class JwtTokenUtil implements Serializable {
@@ -14,7 +26,7 @@ public class JwtTokenUtil implements Serializable {
         return getClaimFromToken(token, Claims::getExpiration);
     }
 
-    public  T getClaimFromToken(String token, Function claimsResolver) {
+    public <T> T getClaimFromToken(String token, Function<Claims, T> claimsResolver) {
         final Claims claims = getAllClaimsFromToken(token);
         return claimsResolver.apply(claims);
     }
@@ -31,8 +43,8 @@ public class JwtTokenUtil implements Serializable {
         return expiration.before(new Date());
     }
 
-    public String generateToken(User user) {
-        return doGenerateToken(user.getUsername());
+    public String generateToken(Usuarios user) {
+        return doGenerateToken(user.getId_usuario());
     }
 
     private String doGenerateToken(String subject) {
