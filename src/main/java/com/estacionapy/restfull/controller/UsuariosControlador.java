@@ -33,7 +33,7 @@ public class UsuariosControlador {
 	}
 	
 	@GetMapping("/usuarios/{id}")
-	public ResponseEntity<Usuarios> getCategoriaUsuariosById(@PathVariable(value="id") String usuarioId)
+	public ResponseEntity<Usuarios> getCategoriaUsuariosById(@PathVariable(value="id") int usuarioId)
 			 throws ResourceNotFoundException {
 		  Usuarios usuarios = usuariosRepository.findById(usuarioId)
 		          .orElseThrow(() -> new ResourceNotFoundException("No se encuentran usuarios con este id :: " + usuarioId));
@@ -46,7 +46,7 @@ public class UsuariosControlador {
     }
 	
 	@PutMapping("/usuarios/{id}")
-    public ResponseEntity<Usuarios> updateEmployee(@PathVariable(value = "id") String usuarioId,
+    public ResponseEntity<Usuarios> updateEmployee(@PathVariable(value = "id") int usuarioId,
          @Valid @RequestBody Usuarios usuariosDetails) throws ResourceNotFoundException {
 		Usuarios usuario = usuariosRepository.findById(usuarioId)
         .orElseThrow(() -> new ResourceNotFoundException("No se encuentran usuarios con este id :: " + usuarioId));
@@ -63,7 +63,7 @@ public class UsuariosControlador {
     }
 
 	@DeleteMapping("/usuarios/{id}")
-    public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") String usuarioId)
+    public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") int usuarioId)
          throws ResourceNotFoundException {
 		Usuarios usuario = usuariosRepository.findById(usuarioId)
        .orElseThrow(() -> new ResourceNotFoundException("No se encuentran usuarios con este id :: " + usuarioId));

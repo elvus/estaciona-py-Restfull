@@ -28,8 +28,8 @@ public class UsuariosServiceImpl implements UserDetailsService, UsuariosService 
     @Autowired
     private BCryptPasswordEncoder bcryptEncoder;
 
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Usuarios user = userDao.findByUsername(username);
+    public UserDetails loadUserByUsername(int username) throws UsernameNotFoundException {
+        Usuarios user = userDao.findById_usuario(username);
         if(user == null){
             throw new UsernameNotFoundException("Invalid username or password.");
         }
@@ -52,8 +52,8 @@ public class UsuariosServiceImpl implements UserDetailsService, UsuariosService 
     }
 
     @Override
-    public Usuarios findOne(String username) {
-        return userDao.findByUsername(username);
+    public Usuarios findOne(int username) {
+        return userDao.findById_usuario(username);
     }
 
     @Override

@@ -1,7 +1,7 @@
 package com.estacionapy.restfull.model;
 
 public class UsuariosDto {
-    private String id_usuario;
+    private int id_usuario;
     private String nombre;
     private String password;
     private String token;
@@ -12,11 +12,11 @@ public class UsuariosDto {
     private String nacionalidad;
     private Boolean estado;
 
-    public String getId_usuario() {
+    public int getId_usuario() {
         return id_usuario;
     }
 
-    public void setId_usuario(String id_usuario) {
+    public void setId_usuario(int id_usuario) {
         this.id_usuario = id_usuario;
     }
 

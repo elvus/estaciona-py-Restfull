@@ -7,9 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface UsuariosDao extends CrudRepository<Usuarios, String> {
+public interface UsuariosDao extends CrudRepository<Usuarios, Integer> {
 
-    Usuarios findByUsername(String username);
-    Optional<Usuarios> findById(String Id_usuario);
+    Usuarios findById_usuario(int username);
 
 }
