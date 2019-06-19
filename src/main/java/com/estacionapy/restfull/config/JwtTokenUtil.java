@@ -1,5 +1,5 @@
 package com.estacionapy.restfull.config;
-import com.estacionapy.restfull.model.Usuarios;
+import com.estacionapy.restfull.model.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -43,8 +43,8 @@ public class JwtTokenUtil implements Serializable {
         return expiration.before(new Date());
     }
 
-    public String generateToken(Usuarios user) {
-        return doGenerateToken(user.getId_usuario());
+    public String generateToken(User user) {
+        return doGenerateToken(user.getUsername());
     }
 
     private String doGenerateToken(String subject) {

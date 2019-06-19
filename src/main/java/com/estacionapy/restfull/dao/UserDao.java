@@ -1,14 +1,14 @@
 package com.estacionapy.restfull.dao;
 
-import com.estacionapy.restfull.model.Usuarios;
+import com.estacionapy.restfull.model.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface UsuariosDao extends CrudRepository<Usuarios, Integer> {
+public interface UserDao extends CrudRepository<User, Integer> {
 
-    Usuarios findById_usuario(int username);
+    User findByUsername(String username);
 
 }

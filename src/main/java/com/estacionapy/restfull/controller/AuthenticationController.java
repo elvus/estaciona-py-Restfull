@@ -2,7 +2,7 @@ package com.estacionapy.restfull.controller;
 
 import com.estacionapy.restfull.config.JwtTokenUtil;
 import com.estacionapy.restfull.model.*;
-import com.estacionapy.restfull.service.UsuariosService;
+import com.estacionapy.restfull.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

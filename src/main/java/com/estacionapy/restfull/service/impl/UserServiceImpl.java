@@ -1,9 +1,9 @@
 package com.estacionapy.restfull.service.impl;
 
-import com.estacionapy.restfull.dao.UsuariosDao;
-import com.estacionapy.restfull.model.Usuarios;
-import com.estacionapy.restfull.model.UsuariosDto;
-import com.estacionapy.restfull.service.UsuariosService;
+import com.estacionapy.restfull.dao.UserDao;
+import com.estacionapy.restfull.model.User;
+import com.estacionapy.restfull.model.UserDto;
+import com.estacionapy.restfull.service.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,28 +20,28 @@ import java.util.Optional;
 
 
 @Service(value = "userService")
-public class UsuariosServiceImpl implements UserDetailsService, UsuariosService {
+public class UserServiceImpl implements UserDetailsService, UserService {
 
     @Autowired
-    private UsuariosDao userDao;
+    private UserDao userDao;
 
     @Autowired
     private BCryptPasswordEncoder bcryptEncoder;
 
-    public UserDetails loadUserByUsername(int username) throws UsernameNotFoundException {
-        Usuarios user = userDao.findById_usuario(username);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userDao.findByUsername(username);
         if(user == null){
             throw new UsernameNotFoundException("Invalid username or password.");
         }
-        return new org.springframework.security.core.userdetails.User(user.getId_usuario(), user.getPassword(), getAuthority());
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getAuthority());
     }
 
     private List<SimpleGrantedAuthority> getAuthority() {
         return Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN"));
     }
 
-    public List<Usuarios> findAll() {
-        List<Usuarios> list = new ArrayList<>();
+    public List<User> findAll() {
+        List<User> list = new ArrayList<>();
         userDao.findAll().iterator().forEachRemaining(list::add);
         return list;
     }
@@ -52,19 +52,19 @@ public class UsuariosServiceImpl implements UserDetailsService, UsuariosService 
     }
 
     @Override
-    public Usuarios findOne(int username) {
-        return userDao.findById_usuario(username);
+    public User findOne(String username) {
+        return userDao.findByUsername(username);
     }
 
     @Override
-    public Usuarios findById(int id) {
-        Optional<Usuarios> optionalUser = userDao.findById(id);
+    public User findById(int id) {
+        Optional<User> optionalUser = userDao.findById(id);
         return optionalUser.isPresent() ? optionalUser.get() : null;
     }
 
     @Override
-    public UsuariosDto update(UsuariosDto userDto) {
-        Usuarios user = findById(userDto.getId_usuario());
+    public UserDto update(UserDto userDto) {
+        User user = findById(userDto.getId());
         if(user != null) {
             BeanUtils.copyProperties(userDto, user, "password");
             userDao.save(user);
@@ -73,14 +73,13 @@ public class UsuariosServiceImpl implements UserDetailsService, UsuariosService 
     }
 
     @Override
-    public Usuarios save(UsuariosDto user) {
-        Usuarios newUser = new Usuarios();
-        newUser.setId_usuario(user.getId_usuario());
-        newUser.setNombre(user.getNombre());
-        newUser.setDocumento(user.getDocumento());
+    public User save(UserDto user) {
+        User newUser = new User();
+        newUser.setUsername(user.getUsername());
+        newUser.setFirstName(user.getFirstName());
+        newUser.setLastName(user.getLastName());
         newUser.setPassword(bcryptEncoder.encode(user.getPassword()));
-        newUser.setEmail(user.getEmail());
-        newUser.setNum_documento(user.getNum_documento());
+
         return userDao.save(newUser);
     }
 }
