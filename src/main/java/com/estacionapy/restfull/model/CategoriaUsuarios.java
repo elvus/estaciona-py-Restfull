@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="categorias_usuarios")
 public class CategoriaUsuarios{
-	private long id;
+	private long id_categoria_usuario;
 	private String categoria;
 	private Boolean estado_categoria;
 	
@@ -25,11 +25,11 @@ public class CategoriaUsuarios{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public long getId() {
-		return id;
+	public long getId_categoria_usuario() {
+		return id_categoria_usuario;
 	}
-	public void setId(long id) {
-		this.id=id;
+	public void setId_categoria_usuario(long id_categoria_usuario) {
+		this.id_categoria_usuario=id_categoria_usuario;
 	}
 	
 	@Column(name="categoria", nullable=false)
@@ -50,7 +50,7 @@ public class CategoriaUsuarios{
 	
 	@Override
     public String toString() {
-        return "CategoriaUsuarios [id=" + id + ", Categoria=" + categoria + ", EstadoCategoria=" + estado_categoria
+        return "CategoriaUsuarios [id=" + id_categoria_usuario + ", Categoria=" + categoria + ", EstadoCategoria=" + estado_categoria
        + "]";
     }
 }

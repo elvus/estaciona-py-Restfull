@@ -46,8 +46,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         } else {
             logger.warn("couldn't find bearer string, will ignore the header");
         }
-        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
+        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+            System.out.println(username);
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
             if (jwtTokenUtil.validateToken(authToken, userDetails)) {
